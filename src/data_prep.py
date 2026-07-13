@@ -15,7 +15,12 @@ def load_price_data(filepath: str) -> pd.DataFrame:
     ----------
     filepath : str
         Path to BrentOilPrices.csv (columns: Date, Price).
-        Dates are formatted like '20-May-87'.
+
+        Note: the raw file mixes two date formats across its history,
+        e.g. '20-May-87' (day-Mon-yy) for older rows and
+        'Apr 22, 2020' (Mon day, yyyy) for newer rows. We parse with
+        format='mixed' so pandas infers the correct format per row
+        rather than assuming one fixed format for the whole column.
 
     Returns
     -------
@@ -24,7 +29,7 @@ def load_price_data(filepath: str) -> pd.DataFrame:
         'Price' column.
     """
     df = pd.read_csv(filepath)
-    df["Date"] = pd.to_datetime(df["Date"], format="%d-%b-%y")
+    df["Date"] = pd.to_datetime(df["Date"], format="mixed")
     df = df.sort_values("Date").reset_index(drop=True)
     df = df.set_index("Date")
     return df

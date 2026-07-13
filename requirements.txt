@@ -1,0 +1,20 @@
+# --- Core data handling & EDA (Task 1) ---
+pandas
+numpy
+matplotlib
+statsmodels
+
+# --- Bayesian modeling (Task 2) ---
+pymc
+arviz
+
+# --- Notebook tooling ---
+jupytext
+ipykernel
+
+# --- Dashboard backend (Task 3) ---
+flask
+flask-cors
+
+# --- Optional but useful ---
+python-dotenv
