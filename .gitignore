@@ -1,3 +1,4 @@
-/data
+data/raw/BrentOilPrices.csv
+data/processed
 /.venv
 /.vscode
